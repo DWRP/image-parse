@@ -13,7 +13,9 @@ class DefaultRouter {
       const imgBuffer = Buffer.from(image, "base64");
 
       const resizedImageBuffer = await sharp(imgBuffer)
-        .resize(parseInt(width), parseInt(height))
+        .resize(parseInt(width), parseInt(height), {
+            fit: 'contain'
+        })
         .toBuffer();
 
       const resizedImageBase64 = resizedImageBuffer.toString("base64");
